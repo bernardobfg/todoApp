@@ -93,7 +93,7 @@ export const Home = () => {
       <Header />
       <div>
         <NewTodo handleAddTodo={handleAddTodo} />
-        <DragDropContext onDragEnd={(e) => handleDragTodo(e)}>
+        <DragDropContext onDragEnd={(e) => handleDragTodo(e as any)}>
           <TodoList todos={selectedTodos} handleMarkAsCompleted={handleMarkAsCompleted} handleDeleteTodo={handleDeleteTodo} />
         </DragDropContext>
 
