@@ -7,5 +7,10 @@
   height: 100%;
   padding: 0;
   margin-top: 20px;
-  background-color: var(--blue-800);
+  &.dark{
+    background-color: var(--dark-box);
+  }
+  &.light{
+    background-color: var(--light-box);
+  }
 }

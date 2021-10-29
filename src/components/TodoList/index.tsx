@@ -1,3 +1,4 @@
+import { useTheme } from "../../hooks/useTheme";
 import { TodoProps } from "../../pages/Home"
 import { Todo } from "../Todo"
 import styles from "./styles.module.scss"
@@ -7,9 +8,10 @@ interface TodoListProps {
   handleDeleteTodo: (id: string) => void;
 }
 
-export const TodoList = ({todos, handleMarkAsCompleted, handleDeleteTodo}: TodoListProps) => {
+export const TodoList = ({ todos, handleMarkAsCompleted, handleDeleteTodo }: TodoListProps) => {
+  const { themeName} = useTheme();
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${themeName === "light"? styles.light: styles.dark}`}>
       {todos.map(todo => (
         <Todo key={todo.id} todo={todo} handleMarkAsCompleted={handleMarkAsCompleted} handleDeleteTodo={handleDeleteTodo}/>
       ))}

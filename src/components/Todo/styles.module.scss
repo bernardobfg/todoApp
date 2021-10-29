@@ -6,7 +6,7 @@
   height: 100%;
   padding: 15px 20px;
   margin: 0;
-  border-bottom: 1px solid var(--blue-600);
+  
 
   button{
     background-color:transparent;
@@ -27,12 +27,37 @@
   p{
     margin: 0 15px;
     flex: 1;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+  &.dark{
+    border-bottom: 1px solid var(--dark-border);
+    color: var(--dark-text);
+    .completed{
+      color: var(--dark-text-completed);
+    }
+  }
+  &.light{
+    border-bottom: 1px solid var(--light-border);
+    color: var(light-text);
+    .completed{
+      color: var(--light-text-completed);
+    }
+
+  }
+  
 }
 
 .unchecked{
   background-color: transparent;
-  border: 1px solid var(--blue-600);
+}
+
+.dark .unchecked{
+  border: 1px solid var(--dark-border);
+}
+.light .unchecked{
+  border: 1px solid var(--light-border);
 }
 
 .checked{
@@ -55,7 +80,7 @@
 }
 
 
+
 .completed{
   text-decoration: line-through;
-  color: var(--blue-100);
 }

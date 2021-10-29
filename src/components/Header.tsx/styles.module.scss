@@ -1,9 +1,15 @@
 .container{
   height: 250px;
-  background: url(../../assets/bg-desktop-dark.jpg);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+  &.dark{
+    background: url(../../assets/bg-desktop-dark.jpg);
+  }
+  &.light{
+    background: url(../../assets/bg-desktop-light.jpg);
+  }
 
   div{
     width: 500px;
@@ -28,9 +34,16 @@
     div{
       width: 90%;
     }
-    background: url(../../assets/bg-mobile-dark.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    &.dark{
+      background: url(../../assets/bg-mobile-dark.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    &.light{
+      background: url(../../assets/bg-mobile-light.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
     
   }
 }

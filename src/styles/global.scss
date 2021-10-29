@@ -4,18 +4,24 @@
   box-sizing: border-box;
 }
 :root{
-  --white: #FFF;
-  --blue-50: hsl(236, 33%, 92%);
-  --blue-100: hsl(234, 39%, 85%);
-  --blue-400: hsl(234, 11%, 52%);
-  --blue-600: hsl(233, 14%, 35%);
-  --blue-700: hsl(237, 14%, 26%);
-  --blue-800: hsl(235, 24%, 19%);
-  --blue-900: hsl(235, 21%, 11%); 
+
+  --dark-background: hsl(235, 21%, 11%);
+  --dark-box: hsl(235, 24%, 19%);
+  --dark-border: hsl(233, 14%, 35%);
+  --dark-text: hsl(234, 39%, 85%);
+  --dark-text-completed: hsl(234, 39%, 85%);
+
+  --light-background: hsl(236, 33%, 92%);
+  --light-box: hsl(0, 0%, 98%);
+
+  --light-border: hsl(233, 11%, 84%);
+  --light-text: hsl(235, 19%, 35%);
+  --light-text-completed: hsl(236, 9%, 61%);
+
   --blue: hsl(220, 98%, 61%);
   --checked1: hsl(192, 100%, 67%);
   --checked2: hsl(280, 87%, 65%);
-
+  
 }
 @media(max-width: 1080px){
   html{
@@ -29,10 +35,7 @@
   }
 }
 
-body{
-  background-color:  var(--blue-900);
-  color: var(--white);
-}
+
 
 body, input,textArea, select, button{
   font: 400 1.125rem "Josefin Sans", sans-serif;

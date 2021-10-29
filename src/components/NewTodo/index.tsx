@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTheme } from "../../hooks/useTheme";
 import styles from "./styles.module.scss"
 
 interface NewTodoProps{
@@ -8,7 +9,8 @@ interface NewTodoProps{
 
 
 
-export const NewTodo = ({handleAddTodo}: NewTodoProps) => {
+export const NewTodo = ({ handleAddTodo }: NewTodoProps) => {
+  const { themeName} = useTheme();
   const [text, setText] = useState("");
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -22,7 +24,7 @@ export const NewTodo = ({handleAddTodo}: NewTodoProps) => {
 
   
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${themeName === "light"? styles.light: styles.dark}`}>
       <span></span>
       <form onSubmit={onSubmit} >
         <input
