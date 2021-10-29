@@ -27,7 +27,7 @@ export const Home = () => {
     if (todoType === "active") {
       setSelectedTodos(allTodos.filter(todo => !todo.completed))
     }
-    }, [todoType, allTodos])
+  }, [todoType, allTodos])
 
   const handleAddTodo = (text: string) => {
     const newTodo: TodoProps = {
@@ -38,7 +38,7 @@ export const Home = () => {
     setAllTodos([...allTodos, newTodo]);
   };
 
-  const handleMarkAsCompleted = (id: string)  => {
+  const handleMarkAsCompleted = (id: string) => {
     const newTodos = allTodos.map(todo => {
       if (todo.id === id) {
         return { ...todo, completed: !todo.completed };
@@ -61,16 +61,21 @@ export const Home = () => {
     <div className={styles.container}>
       <Header />
       <div>
-        <NewTodo handleAddTodo={handleAddTodo}/>
+        <NewTodo handleAddTodo={handleAddTodo} />
         <TodoList todos={selectedTodos} handleMarkAsCompleted={handleMarkAsCompleted} handleDeleteTodo={handleDeleteTodo} />
         <div className={styles.resume}>
           <small>{allTodos.filter(todo => !todo.completed).length} item(s) left</small>
           <div>
-            <button className={todoType === "all"? styles.selected: ""} onClick={() => setTodoType("all")}>All</button>
-            <button className={todoType === "active"? styles.selected: ""} onClick={() => setTodoType("active")}>Active</button>
-            <button className={todoType === "completed"? styles.selected: ""} onClick={() => setTodoType("completed")}>Completed</button>
+            <button className={todoType === "all" ? styles.selected : ""} onClick={() => setTodoType("all")}>All</button>
+            <button className={todoType === "active" ? styles.selected : ""} onClick={() => setTodoType("active")}>Active</button>
+            <button className={todoType === "completed" ? styles.selected : ""} onClick={() => setTodoType("completed")}>Completed</button>
           </div>
           <button onClick={handleClearCompleted}>Clear Completed</button>
+        </div>
+        <div className={styles.smallDevicesButtons}>
+          <button className={todoType === "all" ? styles.selected : ""} onClick={() => setTodoType("all")}>All</button>
+          <button className={todoType === "active" ? styles.selected : ""} onClick={() => setTodoType("active")}>Active</button>
+          <button className={todoType === "completed" ? styles.selected : ""} onClick={() => setTodoType("completed")}>Completed</button>
         </div>
       </div>
     </div>

@@ -6,6 +6,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media(max-width: 768px){
+      width: 90%;
+    }
   }
 }
 
@@ -30,6 +33,7 @@
     &:hover{
       color: var(--white);
     }
+    
   }
   .selected{
     color: var(--blue) !important;
@@ -40,5 +44,37 @@
     button + button{
       margin-left: 10px;
     }
+    @media(max-width: 768px){
+      display: none;
+    }
+  }
+}
+
+.smallDevicesButtons{
+  display: none;
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: var(--blue-800);
+  @media(max-width: 768px){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  button{
+    background: transparent;
+    border: 0;
+    color: var(--blue-100);
+    font-size: .8rem;
+    transition: all .2s linear;
+    &:hover{
+      color: var(--white);
+    }
+  }
+  .selected{
+    color: var(--blue) !important;
+  }
+  button + button{
+    margin-left: 20px;
   }
 }
