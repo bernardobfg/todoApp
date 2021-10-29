@@ -1,8 +1,12 @@
 .container{
-  height: 250px;
+  height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   color: white;
   &.dark{
     background: url(../../assets/bg-desktop-dark.jpg);
