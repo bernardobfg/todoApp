@@ -1,3 +1,4 @@
+import { Droppable } from "react-beautiful-dnd";
 import { useTheme } from "../../hooks/useTheme";
 import { TodoProps } from "../../pages/Home"
 import { Todo } from "../Todo"
@@ -9,12 +10,31 @@ interface TodoListProps {
 }
 
 export const TodoList = ({ todos, handleMarkAsCompleted, handleDeleteTodo }: TodoListProps) => {
-  const { themeName} = useTheme();
+  const { themeName } = useTheme();
   return (
-    <div className={`${styles.container} ${themeName === "light"? styles.light: styles.dark}`}>
-      {todos.map(todo => (
-        <Todo key={todo.id} todo={todo} handleMarkAsCompleted={handleMarkAsCompleted} handleDeleteTodo={handleDeleteTodo}/>
-      ))}
-    </div>
+    <Droppable droppableId={"todo"}>
+      {(provided) => {
+        return (
+          <div ref={provided.innerRef}
+            {...provided.droppableProps}
+            className={`${styles.container} ${themeName === "light" ? styles.light : styles.dark}`}
+          >
+            {
+              todos.map((todo, index) => (
+                <Todo
+                  key={todo.id}
+                  index={index}
+                  todo={todo}
+                  handleMarkAsCompleted={handleMarkAsCompleted}
+                  handleDeleteTodo={handleDeleteTodo}
+                />
+              ))
+            }
+            {provided.placeholder}
+          </div>
+        )
+      }}
+    </Droppable>
+
   )
 }

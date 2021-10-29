@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DragDropContext } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
 import { Header } from "../../components/Header.tsx";
 import { NewTodo } from "../../components/NewTodo";
@@ -12,10 +13,20 @@ export type TodoProps = {
   completed: boolean;
 }
 
+type handleDragProps = {
+  destination: {
+    droppabledId: string,
+    index: number
+  };
+  source: {
+    droppabledId: string,
+    index: number
+  }
+}
 
 export const Home = () => {
 
-  const { themeName} = useTheme();
+  const { themeName } = useTheme();
 
   const [allTodos, setAllTodos] = useState<TodoProps[]>([]);
   const [selectedTodos, setSelectedTodos] = useState<TodoProps[]>([]);
@@ -61,13 +72,32 @@ export const Home = () => {
     setAllTodos(newTodos);
   }
 
+  const handleDragTodo = ({destination, source}: handleDragProps) => {
+    if (!destination)
+      return;
+    if (destination.index === source.index)
+      return;
+    const todoCopy = allTodos[source.index]
+    setAllTodos(prev => {
+      prev = [ ...prev ]
+      prev.splice(source.index, 1)
+      prev.splice(destination.index, 0, todoCopy)
+      return prev
+
+    })
+    
+  }
+
   return (
-    <div className={`${styles.container} ${themeName === "light"? styles.light: styles.dark}`}>
+    <div className={`${styles.container} ${themeName === "light" ? styles.light : styles.dark}`}>
       <Header />
       <div>
         <NewTodo handleAddTodo={handleAddTodo} />
-        <TodoList todos={selectedTodos} handleMarkAsCompleted={handleMarkAsCompleted} handleDeleteTodo={handleDeleteTodo} />
-        <div className={`${styles.resume}  ${themeName === "light"? styles.light: styles.dark}`}>
+        <DragDropContext onDragEnd={(e) => handleDragTodo(e)}>
+          <TodoList todos={selectedTodos} handleMarkAsCompleted={handleMarkAsCompleted} handleDeleteTodo={handleDeleteTodo} />
+        </DragDropContext>
+
+        <div className={`${styles.resume}  ${themeName === "light" ? styles.light : styles.dark}`}>
           <small>{allTodos.filter(todo => !todo.completed).length} item(s) left</small>
           <div>
             <button className={todoType === "all" ? styles.selected : ""} onClick={() => setTodoType("all")}>All</button>
@@ -76,7 +106,7 @@ export const Home = () => {
           </div>
           <button onClick={handleClearCompleted}>Clear Completed</button>
         </div>
-        <div className={`${styles.smallDevicesButtons}  ${themeName === "light"? styles.light: styles.dark}`}>
+        <div className={`${styles.smallDevicesButtons}  ${themeName === "light" ? styles.light : styles.dark}`}>
           <button className={todoType === "all" ? styles.selected : ""} onClick={() => setTodoType("all")}>All</button>
           <button className={todoType === "active" ? styles.selected : ""} onClick={() => setTodoType("active")}>Active</button>
           <button className={todoType === "completed" ? styles.selected : ""} onClick={() => setTodoType("completed")}>Completed</button>
