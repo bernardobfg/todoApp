@@ -1,10 +1,44 @@
 .container{
   >div{
     width: 500px;
-    margin: -80px auto 0;
+    margin: -100px auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+}
+
+.resume{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  background-color: var(--blue-800);
+  padding: 10px 20px;
+  small{
+    font-size: .8rem;
+  }
+  
+  button{
+    background: transparent;
+    border: 0;
+    color: var(--blue-100);
+    font-size: .8rem;
+    transition: all .2s linear;
+    &:hover{
+      color: var(--white);
+    }
+  }
+  .selected{
+    color: var(--blue) !important;
+  }
+
+  div{
+    
+    button + button{
+      margin-left: 10px;
+    }
   }
 }

@@ -4,20 +4,20 @@ import cross from '../../assets/icon-cross.svg'
 import styles from "./styles.module.scss"
 interface TodoComponentProps {
   todo: TodoProps;
-  handleMarkAsCompleted: (id: number) => void;
-  handleDeleteTodo: (id: number) => void;
+  handleMarkAsCompleted: (id: string) => void;
+  handleDeleteTodo: (id: string) => void;
 
 }
 
 export const Todo = ({ todo, handleMarkAsCompleted, handleDeleteTodo }: TodoComponentProps) => {
   return (
     <div className={styles.container}>
-      <button onClick={() => handleMarkAsCompleted(todo.id)}>
+      <button onClick={() => handleMarkAsCompleted(todo.id)} className={todo.completed ? styles.colored: ""}>
         {
           <div className={todo.completed ? styles.checked : styles.unchecked}> </div>
         }
       </button>
-      <p>{todo.text}</p>
+      <p className={todo.completed ? styles.completed: ""}>{todo.text}</p>
       <button className={styles.cross} onClick={() => handleDeleteTodo(todo.id)}>
         <img src={cross} alt="cross" />
       </button>

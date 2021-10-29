@@ -3,8 +3,8 @@ import { Todo } from "../Todo"
 import styles from "./styles.module.scss"
 interface TodoListProps {
   todos: TodoProps[];
-  handleMarkAsCompleted: (id: number) => void;
-  handleDeleteTodo: (id: number) => void;
+  handleMarkAsCompleted: (id: string) => void;
+  handleDeleteTodo: (id: string) => void;
 }
 
 export const TodoList = ({todos, handleMarkAsCompleted, handleDeleteTodo}: TodoListProps) => {
