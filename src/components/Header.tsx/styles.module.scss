@@ -1,0 +1,27 @@
+.container{
+  height: 250px;
+  background: url(../../assets/bg-desktop-dark.jpg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div{
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -20px;
+    h1{
+      letter-spacing:0.5rem;
+      font-weight: bold;
+    }
+    img{
+      cursor:pointer;
+      transition: all 0.5s linear;
+      &:hover{
+        filter: brightness(1.1);
+        transform: scale(1.1);
+      }
+    }
+  }
+}
