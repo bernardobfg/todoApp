@@ -12,7 +12,7 @@ interface TodoListProps {
 export const TodoList = ({ todos, handleMarkAsCompleted, handleDeleteTodo }: TodoListProps) => {
   const { themeName } = useTheme();
   return (
-    <Droppable droppableId={"todo"}>
+    <Droppable droppableId={"todo"} isCombineEnabled>
       {(provided) => {
         return (
           <div ref={provided.innerRef}
