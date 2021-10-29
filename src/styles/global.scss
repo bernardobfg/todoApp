@@ -23,6 +23,12 @@
   --checked2: hsl(280, 87%, 65%);
   
 }
+
+body{
+  overflow-y: hidden;
+}
+
+
 @media(max-width: 1080px){
   html{
       font-size: 93.75%;

@@ -35,8 +35,10 @@
     }
   }
   @media(max-width: 768px){
+    height: 32vh;
     div{
       width: 90%;
+      
     }
     &.dark{
       background: url(../../assets/bg-mobile-dark.jpg);
